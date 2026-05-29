@@ -11,7 +11,6 @@ Meteor Client addon for **Minecraft 1.21.1**, **1.21.4**, and **1.21.11** (Fabri
 | **AncientBuildsFinder** | Available | Highlights chunks that contain enough ancient build blocks from your list. |
 | **IllegalsFinder** | Available | ESP for illegal block states and placements in render distance. |
 | **OldMapFinder** | Available | ESP for filled maps with a map ID below a threshold (item frames, ground drops). |
-| ItemFinder | Planned | — |
 
 ## Build
 

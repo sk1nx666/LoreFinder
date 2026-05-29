@@ -1,0 +1,46 @@
+plugins {
+    id "fabric-loom" version "1.8-SNAPSHOT"
+}
+
+version = project.mod_version
+group = project.maven_group
+archivesBaseName = project.archives_base_name
+
+repositories {
+    maven {
+        name = "Meteor Releases"
+        url = "https://maven.meteordev.org/releases"
+    }
+    maven {
+        name = "Meteor Snapshots"
+        url = "https://maven.meteordev.org/snapshots"
+    }
+}
+
+dependencies {
+    minecraft "com.mojang:minecraft:${project.minecraft_version}"
+    mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
+    modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
+    modCompileOnly "meteordevelopment:meteor-client:${project.meteor_version}"
+}
+
+processResources {
+    inputs.property "version", project.version
+    inputs.property "minecraft_version", project.minecraft_version
+    inputs.property "jdk_version", project.jdk_version
+
+    filesMatching("fabric.mod.json") {
+        expand "version": project.version,
+            "minecraft_version": project.minecraft_version,
+            "jdk_version": project.jdk_version
+    }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    it.options.release = 21
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_21
+    targetCompatibility = JavaVersion.VERSION_21
+}

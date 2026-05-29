@@ -1,6 +1,6 @@
 # LoreFinder++
 
-Meteor Client addon for **Minecraft 1.21.4** (Fabric).
+Meteor Client addon for **Minecraft 1.21.1**, **1.21.4**, and **1.21.11** (Fabric).
 
 ## Modules
 
@@ -15,13 +15,22 @@ Meteor Client addon for **Minecraft 1.21.4** (Fabric).
 
 ## Build
 
-Requires **Java 21** and Meteor Client `1.21.4-SNAPSHOT` in your mods folder.
+Requires **Java 21** and the matching [Meteor Client](https://meteorclient.com) build for your Minecraft version.
 
 ```bash
-./gradlew build
+# Active version (see stonecutter.gradle.kts, default 1.21.4)
+./gradlew buildActive
+
+# All supported versions
+./gradlew buildAllAndCollect
+
+# One version
+./gradlew :1.21.1:build
+./gradlew :1.21.4:build
+./gradlew :1.21.11:build
 ```
 
-Output: `build/libs/lorefinder-0.1.0.jar`
+Output jars: `build/libs/0.1.0/lorefinder-0.1.0+mc<version>.jar`
 
 ## License
 
@@ -29,8 +38,8 @@ This project is licensed under the [GNU General Public License v3.0](LICENSE) (G
 
 ## Usage
 
-1. Install [Meteor Client](https://meteorclient.com) for 1.21.4.
-2. Place `lorefinder-0.1.0.jar` in your `mods` folder.
+1. Install [Meteor Client](https://meteorclient.com) for your Minecraft version (1.21.1, 1.21.4, or 1.21.11).
+2. Place the matching `lorefinder-0.1.0+mc<version>.jar` in your `mods` folder.
 3. In Meteor → **LoreFinder++** → enable a module.
 
 ### AncientBuildsFinder

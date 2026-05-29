@@ -90,3 +90,5 @@ Sign text is visible on the client, so this works in **singleplayer and multipla
 
 - Highlights entities with a **custom name** (`hasCustomName()`).
 - **tracers** — optional.
+
+If you encounter any issues with the mod, please DM sk1nx666 on Discord regarding the issue.

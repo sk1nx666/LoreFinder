@@ -1,13 +1,34 @@
+# Gradle
 .gradle/
 build/
 out/
+classes/
+
+# Fabric / Loom
 run/
+logs/
+
+# Local reference clones (not part of this project)
+_template/
+_meteor-ref/
+
+# IDE — IntelliJ / Eclipse / VS Code
 .idea/
 *.iml
 *.ipr
 *.iws
+*.launch
+.settings/
+.vscode/
+bin/
 .classpath
 .project
-.settings/
-bin/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs / misc
 *.log
+*.swp
+*~

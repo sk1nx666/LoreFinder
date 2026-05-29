@@ -23,6 +23,10 @@ Requires **Java 21** and Meteor Client `1.21.4-SNAPSHOT` in your mods folder.
 
 Output: `build/libs/lorefinder-0.1.0.jar`
 
+## License
+
+This project is licensed under the [GNU General Public License v3.0](LICENSE) (GPL-3.0).
+
 ## Usage
 
 1. Install [Meteor Client](https://meteorclient.com) for 1.21.4.

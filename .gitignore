@@ -1,6 +1,4 @@
-# Gradle / build output (local only — not published)
-.gradle/
-build/
+# Gradle / build output
 out/
 classes/
 versions/*/build/

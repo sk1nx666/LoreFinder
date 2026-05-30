@@ -3,11 +3,11 @@
   "id": "lorefinder",
   "version": "${version}",
   "name": "LoreFinder++",
-  "description": "Meteor Client addon — signs, ancient builds, illegals, and lore tools for 2b2t-style exploration.",
+  "description": "Lore Finder Addon for Meteor Client. Find old signs, ancient builds, illegals, and so much more!",
   "authors": [
     "sk1nx"
   ],
-  "license": "GPL-3.0-only",
+  "license": "GPL-3.0",
   "contact": {},
   "icon": "assets/lorefinder/icon.png",
   "environment": "client",

@@ -10,7 +10,7 @@ Meteor Client addon for **Minecraft 1.21.1**, **1.21.4**, and **1.21.11** (Fabri
 | **NamedEntityFinder** | Available | ESP for entities with a custom name in render distance. |
 | **AncientBuildsFinder** | Available | Highlights chunks that contain enough ancient build blocks from your list. |
 | **IllegalsFinder** | Available | ESP for illegal block states and placements in render distance. |
-| **OldMapFinder** | Available | ESP for filled maps with a map ID below a threshold (item frames, ground drops). |
+| **LowMapIDFinder** | Available | ESP for filled maps with a map ID below a threshold (item frames, ground drops). |
 | ItemFinder | Planned | — |
 
 ## Build
@@ -80,7 +80,7 @@ Sign text is visible on the client, so this works in **singleplayer and multipla
 - Years are read only as **four consecutive digits**, between **2010** and the current year.
 - **tracers** — lines from your crosshair to matching signs.
 
-### OldMapFinder
+### LowMapIDFinder
 
 - **map-id-max** — highlight maps with ID **below** this value (default `50000`). IDs must be **≥ 1** (ID `0` is treated as invalid/placeholder).
 - **item-frames** — uses the client’s loaded **map states** (frame entity → real map ID), not the item stack alone.

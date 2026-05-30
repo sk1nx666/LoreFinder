@@ -11,6 +11,8 @@ import net.minecraft.world.World;
 import net.minecraft.world.WorldView;
 import net.minecraft.block.BlockState;
 import net.minecraft.world.chunk.ChunkSection;
+import net.minecraft.world.chunk.ChunkStatus;
+import net.minecraft.world.chunk.WorldChunk;
 
 import java.util.function.Predicate;
 
@@ -120,10 +122,18 @@ public final class IllegalBlockChecks {
         return true;
     }
 
+    /**
+     * Neighbor chunks must be loaded and at {@link ChunkStatus#FULL} so placement checks
+     * against blocks in adjacent chunks are not evaluated against stale or empty data.
+     */
     public static boolean isChunkBorderContextLoaded(World world, ChunkPos chunkPos) {
         for (int dx = -1; dx <= 1; dx++) {
             for (int dz = -1; dz <= 1; dz++) {
                 if (!world.isChunkLoaded(chunkPos.x + dx, chunkPos.z + dz)) return false;
+
+                WorldChunk chunk = world.getChunk(chunkPos.x + dx, chunkPos.z + dz);
+                if (chunk == null || chunk.isEmpty()) return false;
+                if (!chunk.getStatus().isAtLeast(ChunkStatus.FULL)) return false;
             }
         }
 

@@ -148,7 +148,6 @@ public class IllegalsFinder extends Module {
     private final Queue<ChunkPos> scanQueue = new ArrayDeque<>();
     private final Set<ChunkPos> queued = new HashSet<>();
     private int rescanTimer;
-    private int pruneTimer;
     private double maxDistSq;
 
     public IllegalsFinder() {
@@ -161,7 +160,6 @@ public class IllegalsFinder extends Module {
         scanQueue.clear();
         queued.clear();
         rescanTimer = 0;
-        pruneTimer = 0;
         updateMaxDistSq();
         queueChunksInRange();
     }
@@ -179,17 +177,17 @@ public class IllegalsFinder extends Module {
 
         updateMaxDistSq();
 
-        if (++pruneTimer >= 20) {
-            pruneTimer = 0;
-            pruneMarkers();
-        }
+        pruneMarkers();
 
         int budget = chunksPerTick.get();
         while (budget-- > 0 && !scanQueue.isEmpty()) {
             ChunkPos chunkPos = scanQueue.poll();
             queued.remove(chunkPos);
 
-            if (!IllegalBlockChecks.isChunkBorderContextLoaded(mc.world, chunkPos)) continue;
+            if (!IllegalBlockChecks.isChunkBorderContextLoaded(mc.world, chunkPos)) {
+                enqueueChunk(chunkPos);
+                continue;
+            }
 
             WorldChunk chunk = mc.world.getChunk(chunkPos.x, chunkPos.z);
             if (chunk == null || chunk.isEmpty()) continue;
@@ -222,7 +220,16 @@ public class IllegalsFinder extends Module {
         side.a = fillOpacity.get();
         SettingColor line = lineColor.get();
 
-        for (BlockPos pos : new HashSet<>(markers)) {
+        Iterator<BlockPos> it = markers.iterator();
+        while (it.hasNext()) {
+            BlockPos pos = it.next();
+            BlockState state = mc.world.getBlockState(pos);
+
+            if (!isIllegalAt(pos, state)) {
+                it.remove();
+                continue;
+            }
+
             if (tracers.get()) {
                 event.renderer.line(
                     RenderUtils.center.x, RenderUtils.center.y, RenderUtils.center.z,
@@ -322,8 +329,8 @@ public class IllegalsFinder extends Module {
                     for (int z = 0; z < 16; z++) {
                         if (markers.size() >= maxMarkers.get()) return;
 
-                        BlockState state = section.getBlockState(x, y, z);
-                        if (state.isAir()) continue;
+                        BlockState sectionState = section.getBlockState(x, y, z);
+                        if (sectionState.isAir()) continue;
 
                         int wx = baseX + x;
                         int wy = sectionBottom + y;
@@ -333,6 +340,10 @@ public class IllegalsFinder extends Module {
                         if (distSq > maxDistSq) continue;
 
                         BlockPos pos = new BlockPos(wx, wy, wz);
+                        if (!IllegalBlockChecks.isContextLoaded(mc.world, pos)) continue;
+
+                        BlockState state = mc.world.getBlockState(pos);
+                        if (state.isAir() || state.getBlock() != sectionState.getBlock()) continue;
 
                         if (isIllegalAt(pos, state)) {
                             markers.add(pos.toImmutable());

@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "id": "lorefinder",
+  "version": "${version}",
+  "name": "LoreFinder++",
+  "description": "Meteor Client addon — signs, ancient builds, illegals, and lore tools for 2b2t-style exploration.",
+  "authors": [
+    "sk1nx"
+  ],
+  "license": "GPL-3.0-only",
+  "contact": {},
+  "icon": "assets/lorefinder/icon.png",
+  "environment": "client",
+  "entrypoints": {
+    "meteor": [
+      "com.lorefinder.LoreFinderAddon"
+    ]
+  },
+  "custom": {
+    "meteor-client:color": "180,120,40",
+    "modmenu": {
+      "parent": {
+        "id": "meteor-client"
+      }
+    }
+  },
+  "depends": {
+    "java": ">=21",
+    "minecraft": "${mc_targets}",
+    "meteor-client": "*"
+  }
+}

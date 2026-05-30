@@ -17,7 +17,7 @@ public class LoreFinderAddon extends MeteorAddon {
         Modules.get().add(new NamedEntityFinder());
         Modules.get().add(new AncientBuildsFinder());
         Modules.get().add(new IllegalsFinder());
-        Modules.get().add(new OldMapFinder());
+        Modules.get().add(new LowMapIDFinder());
     }
 
     @Override

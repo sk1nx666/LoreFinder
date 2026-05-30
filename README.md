@@ -10,8 +10,12 @@ Meteor Client addon for **Minecraft 1.21.1**, **1.21.4**, and **1.21.11** (Fabri
 | **NamedEntityFinder** | Available | ESP for entities with a custom name in render distance. |
 | **AncientBuildsFinder** | Available | Highlights chunks that contain enough ancient build blocks from your list. |
 | **IllegalsFinder** | Available | ESP for illegal block states and placements in render distance. |
+<<<<<<< HEAD
 | **LowMapIDFinder** | Available | ESP for filled maps with a map ID below a threshold (item frames, ground drops). |
 | ItemFinder | Planned | — |
+=======
+| **OldMapFinder** | Available | ESP for filled maps with a map ID below a threshold (item frames, ground drops). |
+>>>>>>> af1b3fc188a423bb636e52aa4186617816080a14
 
 ## Build
 
@@ -91,3 +95,5 @@ Sign text is visible on the client, so this works in **singleplayer and multipla
 
 - Highlights entities with a **custom name** (`hasCustomName()`).
 - **tracers** — optional.
+
+If you encounter any issues with the mod, please DM sk1nx666 on Discord regarding the issue.

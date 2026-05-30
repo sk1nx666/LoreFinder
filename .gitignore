@@ -1,4 +1,11 @@
 # Gradle
+.gradle/
+build/
+out/
+classes/
+
+# Stonecutter per-version build output
+versions/*/build/
 
 # Fabric / Loom
 run/

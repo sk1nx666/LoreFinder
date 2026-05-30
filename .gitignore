@@ -2,6 +2,7 @@
 out/
 classes/
 versions/*/build/
+stonecutter.gradle.kts
 
 # Fabric / Loom dev environment
 run/

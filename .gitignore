@@ -1,8 +1,7 @@
-# Gradle / build output
+# Generated build output (not needed to compile from source)
 out/
 classes/
 versions/*/build/
-stonecutter.gradle.kts
 
 # Fabric / Loom dev environment
 run/

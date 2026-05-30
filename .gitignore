@@ -1,21 +1,21 @@
-# Gradle
+# Gradle / build output (local only — not published)
 .gradle/
 build/
 out/
 classes/
-
-# Stonecutter per-version build output
 versions/*/build/
 
-# Fabric / Loom
+# Fabric / Loom dev environment
 run/
 logs/
 
-# Local reference clones (not part of this project)
+# Local reference clones and stray compile output
 _template/
 _meteor-ref/
+meteordevelopment/
+*.class
 
-# IDE — IntelliJ / Eclipse / VS Code
+# IDE
 .idea/
 *.iml
 *.ipr
